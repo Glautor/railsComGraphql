@@ -1,5 +1,7 @@
 module Types
   class QueryType < Types::BaseObject
+    field :user, resolver: Queries::User
+
     field :items,
       [Types::ItemType],
       null: false,
@@ -9,23 +11,23 @@ module Types
       Item.all
     end
 
-    field :users,
-      [Types::UserType],
-      null: true,
-      description: "Return all Users"
+    # field :users,
+    #   [Types::UserType],
+    #   null: true,
+    #   description: "Return all Users"
 
-    def users
-      User.all
-    end
+    # def users
+    #   User.all
+    # end
 
-    field :user, Types::UserType, null: true do
-      description "Find a user by ID"
-      argument :id, ID, required: true
-    end
+    # field :user, Types::UserType, null: true do
+    #   description "Find a user by ID"
+    #   argument :id, ID, required: true
+    # end
 
-    def user(id:)
-      User.find(id)
-    end
+    # def user(id:)
+    #   User.find(id)
+    # end
 
     field :post, Types::PostType, null: true do
       description "Find a post by ID"
