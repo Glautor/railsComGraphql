@@ -1,24 +1,25 @@
 module Types
   class QueryType < Types::BaseObject
     field :user, resolver: Queries::User
+    field :items, resolver: Queries::Items
 
-    field :items,
-      [Types::ItemType],
-      null: false,
-      description: "Returns a list of items in the martian library"
+    # field :items,
+    #   [Types::ItemType],
+    #   null: false,
+    #   description: "Returns a list of items in the martian library"
 
-    def items
-      Item.all
-    end
-
-    # field :users,
-    #   [Types::UserType],
-    #   null: true,
-    #   description: "Return all Users"
-
-    # def users
-    #   User.all
+    # def items
+    #   Item.all
     # end
+
+    field :users,
+      [Types::UserType],
+      null: true,
+      description: "Return all Users"
+
+    def users
+      ::User.all
+    end
 
     # field :user, Types::UserType, null: true do
     #   description "Find a user by ID"
