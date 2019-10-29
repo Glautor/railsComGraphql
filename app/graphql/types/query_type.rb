@@ -1,6 +1,7 @@
 module Types
   class QueryType < Types::BaseObject
     field :user, resolver: Queries::User
+    field :users, resolver: Queries::Users::Users
     field :items, resolver: Queries::Items
 
     # field :items,
