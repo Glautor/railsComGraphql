@@ -3,6 +3,7 @@ module Types
     field :user, resolver: Queries::User
     field :users, resolver: Queries::Users::Users
     field :items, resolver: Queries::Items
+    field :post, resolver: Queries::Post
 
     # field :items,
     #   [Types::ItemType],
@@ -31,13 +32,13 @@ module Types
     #   User.find(id)
     # end
 
-    field :post, Types::PostType, null: true do
-      description "Find a post by ID"
-      argument :rating, Integer, required: true
-    end
+    # field :post, Types::PostType, null: true do
+    #   description "Find a post by ID"
+    #   argument :id, Integer, required: true
+    # end
 
-    def post(rating:)
-      Post.where(rating: 5)
-    end
+    # def post(id:)
+    #   Post.where(rating: 5)
+    # end
   end
 end
